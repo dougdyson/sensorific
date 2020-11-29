@@ -7,16 +7,16 @@ function getSensors () {
 }
 
 function getReadings () {
-  const readingsData = fs.readFileSync('./readings.json', 'utf-8');
+  const readingsData = fs.readFileSync('./readings.json', 'utf8');
   return JSON.parse(readingsData);
 }
 
 function getSensorReadingsById (readings, sensorId) { 
-  return readings.filter(reading => reading.sensorId === sensorId )
+  return readings.filter(reading => reading.sensorId === sensorId);
 }
 
 function getLatestSensorReadingById (readings, sensorId) {
-  // To-Do: check for sorting
+  // assumes data is sorted chronologically
   const sensorReadings = getSensorReadingsById(readings, sensorId);
   return sensorReadings.pop();
 }
