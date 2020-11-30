@@ -16,7 +16,6 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Sensor />
-        <p>{device}</p>
         <p>{reading}°C</p>
       </header>
     </div>
