@@ -1,8 +1,6 @@
 import sensorData from './sensors.json'
 
-const sensors = sensorData;
-
-export default sensors;
+export default sensorData;
 
 // function getSensorReadingsById (readings, sensorId) { 
 //   return readings.filter(reading => reading.sensorId === sensorId);
