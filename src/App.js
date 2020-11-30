@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
-import './data/'
+
+import sensors from './data/sensors.js';
+import readings from './data/readings.js';
+
+console.log('App.js sensors:', sensors);
+console.log('App.js readings:', readings);
+
+const device = sensors[0].name;
+const reading = readings[2].value.toFixed(1);
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p>{device}</p>
+        <p>{reading}°C</p>
       </header>
     </div>
   );
