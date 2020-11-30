@@ -3,6 +3,8 @@ import './App.css';
 import sensors from './data/sensors.js';
 import readings from './data/readings.js';
 
+import Sensor from './components/Sensor/Sensor' //?
+
 console.log('App.js sensors:', sensors);
 console.log('App.js readings:', readings);
 
@@ -13,6 +15,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Sensor />
         <p>{device}</p>
         <p>{reading}°C</p>
       </header>
