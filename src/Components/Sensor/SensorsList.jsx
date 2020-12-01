@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 // import List from '@material-ui/core/List';
 // import ListItem from '@material-ui/core/ListItem';
 
@@ -11,9 +11,7 @@ export default function Sensor(props) {
 
   return (
     <div>
-      <li>
-        {device} {type}
-      </li>
+      {device} {type}
     </div>
   );
 }

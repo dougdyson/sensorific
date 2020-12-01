@@ -1,27 +1,33 @@
-import React, { useState } from 'react';
-import SensorsList from './Components/Sensor/SensorsList' //?
+import React, { useState, useEffect,  } from 'react';
+import Room from './Components/Room/Room';
+
 import sensorsData from './data/sensors.js';
-import readings from './data/readings.js';
-
+// import readings from './data/readings.js';
 import './App.css';
-
-
 
 function App() {
   
-  // find starting index for 'Sensor'
-  // slice off ' Sensor ' for sensor.type
+  const [sensors, setSensors] = useState([]);
+
+  const getSensors =  () => {
+    setSensors(sensorsData);
+  }
   
-  const [sensors, setSensors] = useState([sensorsData]);
+  useEffect(() => {
+    getSensors();
+    for (let index = 0; index < 4; index++) {
+      console.log('useEffect:', sensors[index]);
+    }
+  }, [])
 
   return (
     <div className="App">
       <header className="App-header">
-        <ul>
-          { sensorsData.map(sensor => (
-            <SensorsList name={sensor.name} />
+        <h2>
+          { sensors.map(sensor => (
+            <Room name={sensor.name} />
         ))}
-        </ul>
+        </h2>
       </header>
     </div>
   );
