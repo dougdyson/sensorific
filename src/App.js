@@ -1,39 +1,25 @@
-import React, { useState, useEffect,  } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { getRoomsData } from './Components/helpers/selectors';
-import Room from './Components/Room/Room';
-
-import sensorsData from './data/sensors.js';
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Master from '../src/Components/Master/Master';
+import Detail from '../src/Components/Detail/Detail';
 
 import './App.css';
 
-function App() {
-
-  // const [sensors, setSensors] = useState([]);
-  const [rooms, setRooms] = useState([]);
-
-  const getRooms = () => {
-    const roomsData = getRoomsData(sensorsData);
-    setRooms(roomsData);
-  }
-  
-  useEffect(() => {
-    getRooms();
-  }, [])
-
+function App() {  
   return (
-    <div className="App">
-      <header className="App-header">
-        <h2>
-          {rooms.map(room => (
-            <Room roomData={room} />
-          ))}
-        </h2>
-      </header>
-    </div>
-  );
+    <Router>
+        <div>
+          <Switch>
+            <Route exact path="/" component={Master} />
+            <Route exact path="/detail" component={Detail} />
+          </Switch>
+        </div>
+    </Router>
+  )
 }
 
 export default App;
+
+
 
 

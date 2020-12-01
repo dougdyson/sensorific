@@ -1,6 +1,8 @@
 import React from 'react';
 import readings from '../../data/readings';
 import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
+import Detail from '../Detail/Detail';
 
 export default function Sensor(props) {
   
@@ -19,12 +21,6 @@ export default function Sensor(props) {
     }
   }
 
-  // function getSensorReadingsById (readings, id) {
-  //   console.log('Hello!');
-  //   // assumes readings are sorted chronologically
-  //   //return readings.filter((reading) => (id === reading.sensorId));
-  // }
-
   const latestReading = getLatestSensorReadingById(readings, props.devices.id);
   
   let reading = parseFloat(latestReading.value).toFixed(1);
@@ -35,7 +31,7 @@ export default function Sensor(props) {
   
   return (
     <div>
-      <p><Button size="large" variant="outlined">{reading} {props.devices.units}</Button>
+      <p><Button component={Link} state={props.devices.id} to={'/detail'} size="large" variant="outlined">{reading} {props.devices.units}</Button>
       <br></br>{type}</p>
     </div>
   );
