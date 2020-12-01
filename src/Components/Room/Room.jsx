@@ -1,4 +1,5 @@
 import React from 'react';
+import Divider from '@material-ui/core/Divider';
 import SensorsList from '../Sensor/SensorsList';
 
 export default function Home(props) {
@@ -14,6 +15,7 @@ export default function Home(props) {
       <p>{sensors.map(sensor => (
         <SensorsList devices={sensor} />
       ))}</p>
+      <Divider />
     </section>
   );
 }
