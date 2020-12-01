@@ -6,18 +6,20 @@ import sensorsData from './data/sensors.js';
 import './App.css';
 
 function App() {
-  
+
   const [sensors, setSensors] = useState([]);
+  // const [rooms, setRooms] = useState([]);
 
   const getSensors =  () => {
+    const length = sensorsData.length;
+    for (let index = 0; index < length; index++) {
+      console.log('getSensors:', sensorsData[index].name);
+    }
     setSensors(sensorsData);
   }
   
   useEffect(() => {
     getSensors();
-    for (let index = 0; index < 4; index++) {
-      console.log('useEffect:', sensors[index]);
-    }
   }, [])
 
   return (
