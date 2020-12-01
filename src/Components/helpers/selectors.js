@@ -21,15 +21,12 @@ export function getRoomsData (sensorsData) {
     return room;
   }
 
-  // add room name to data array
+  // add room name and key to rooms data array
   for (let i = 0; i < sensorsData.length; i++) {
     const roomName = getRoomName(sensorsData[i].name);
     sensorsData[i].room = roomName;
     sensorsData[i].key = i;
-    // console.log('getRoomName sensorsData[i]:', sensorsData[i]);
     roomsData.push(sensorsData[i]);
   }
-  // console.log('getRoomsData roomsData:', roomsData);
-  return roomsData;
-  
+  return roomsData; 
 }
