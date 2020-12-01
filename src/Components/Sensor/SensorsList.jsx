@@ -8,10 +8,9 @@ export default function Sensor(props) {
   const type = device[0];
 
   function getLatestSensorReadingById (readings, id) {
-    // assumes data is sorted chronologically
-    const sensorReadings = readings.filter((reading) => (
-      id === reading.sensorId
-    ));
+    // assumes readings are sorted chronologically
+    const sensorReadings = readings.filter((reading) => (id === reading.sensorId));
+    // get last reading
     const lastReading = sensorReadings.pop();
     if (lastReading) {
       return lastReading;
@@ -19,6 +18,12 @@ export default function Sensor(props) {
       return '--';
     }
   }
+
+  // function getSensorReadingsById (readings, id) {
+  //   console.log('Hello!');
+  //   // assumes readings are sorted chronologically
+  //   //return readings.filter((reading) => (id === reading.sensorId));
+  // }
 
   const latestReading = getLatestSensorReadingById(readings, props.devices.id);
   
