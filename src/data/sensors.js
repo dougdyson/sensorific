@@ -1,5 +1,7 @@
 import sensorData from './sensors.json'
 
+// add unique key
+
 export default sensorData;
 
 // function getSensorReadingsById (readings, sensorId) { 

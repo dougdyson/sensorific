@@ -1,4 +1,5 @@
 import React, { useState, useEffect,  } from 'react';
+import { getRoomsData } from './Components/helpers/selectors';
 import Room from './Components/Room/Room';
 
 import sensorsData from './data/sensors.js';
@@ -7,27 +8,24 @@ import './App.css';
 
 function App() {
 
-  const [sensors, setSensors] = useState([]);
-  // const [rooms, setRooms] = useState([]);
+  // const [sensors, setSensors] = useState([]);
+  const [rooms, setRooms] = useState([]);
 
-  const getSensors =  () => {
-    const length = sensorsData.length;
-    for (let index = 0; index < length; index++) {
-      console.log('getSensors:', sensorsData[index].name);
-    }
-    setSensors(sensorsData);
+  const getRooms = () => {
+    const roomsData = getRoomsData(sensorsData);
+    setRooms(roomsData);
   }
   
   useEffect(() => {
-    getSensors();
+    getRooms();
   }, [])
 
   return (
     <div className="App">
       <header className="App-header">
         <h2>
-          { sensors.map(sensor => (
-            <Room name={sensor.name} />
+          {rooms.map(room => (
+            <Room roomData={room} />
         ))}
         </h2>
       </header>
