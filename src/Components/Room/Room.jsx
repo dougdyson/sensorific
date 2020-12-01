@@ -11,7 +11,7 @@ export default function Home(props) {
   return (
     <section>
       <h2>{room}</h2>
-      <p>{sensorCount} devices</p>
+      <p>{sensorCount} sensors</p>
       <p>{sensors.map(sensor => (
         <SensorsList devices={sensor} />
       ))}</p>

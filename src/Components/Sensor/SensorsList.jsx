@@ -1,7 +1,6 @@
 import React from 'react';
 import readings from '../../data/readings';
-// import List from '@material-ui/core/List';
-// import ListItem from '@material-ui/core/ListItem';
+import Button from '@material-ui/core/Button';
 
 export default function Sensor(props) {
   
@@ -31,7 +30,8 @@ export default function Sensor(props) {
   
   return (
     <div>
-      <p>{reading} {props.devices.units}<br></br>{type}</p>
+      <p><Button size="large" variant="outlined">{reading} {props.devices.units}</Button>
+      <br></br>{type}</p>
     </div>
   );
 }
