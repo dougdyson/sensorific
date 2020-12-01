@@ -3,7 +3,7 @@ import { getRoomsData } from './Components/helpers/selectors';
 import Room from './Components/Room/Room';
 
 import sensorsData from './data/sensors.js';
-// import readings from './data/readings.js';
+
 import './App.css';
 
 function App() {
@@ -13,7 +13,6 @@ function App() {
 
   const getRooms = () => {
     const roomsData = getRoomsData(sensorsData);
-    console.log(roomsData);
     setRooms(roomsData);
   }
   
@@ -27,7 +26,7 @@ function App() {
         <h2>
           {rooms.map(room => (
             <Room roomData={room} />
-        ))}
+          ))}
         </h2>
       </header>
     </div>

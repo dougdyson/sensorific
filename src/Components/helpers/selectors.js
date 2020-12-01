@@ -46,7 +46,6 @@ export function getRoomsData (sensorsData) {
     roomsList.push(roomObj);
   }
 
-  console.log('roomsList:', roomsList);
-
+  // return array which groups sensors by room name
   return roomsList;
 }
