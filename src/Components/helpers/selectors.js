@@ -1,6 +1,8 @@
 export function getRoomsData (sensorsData) {
   
   let roomsData = [];
+  let roomNames = [];
+  let roomsList = [];
 
   function getRoomType (names) {
     const roomTypes = ['Living', 'Garage', 'Bedroom', 'Kitchen', 'Hallway', 'Bathroom', 'Dining', 'Outside', 'Office', 'Den']
@@ -12,7 +14,6 @@ export function getRoomsData (sensorsData) {
   }
 
   function getRoomName (sensor) {
-    // console.log('getRoomName sensor:', sensor);
     const names = sensor.split(' ');
     let room = getRoomType(names);
     if (room === 'Living' || room === 'Dining') { 
@@ -24,9 +25,28 @@ export function getRoomsData (sensorsData) {
   // add room name and key to rooms data array
   for (let i = 0; i < sensorsData.length; i++) {
     const roomName = getRoomName(sensorsData[i].name);
+    if (!roomNames.includes(roomName)){
+      roomNames.push(roomName);
+    }
     sensorsData[i].room = roomName;
     sensorsData[i].key = i;
     roomsData.push(sensorsData[i]);
   }
-  return roomsData; 
+
+  // make a new array which groups sensors by room name
+  for (let i = 0; i < roomNames.length; i++) {
+    const sensorList = [];
+    const room = roomNames[i];
+    for (const sensor of roomsData) {
+      if (roomNames[i] === sensor.room) {
+        sensorList.push(sensor);
+      }
+    }
+    const roomObj = {'room' : room, sensorList};
+    roomsList.push(roomObj);
+  }
+
+  console.log('roomsList:', roomsList);
+
+  return roomsList;
 }

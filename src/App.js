@@ -13,6 +13,7 @@ function App() {
 
   const getRooms = () => {
     const roomsData = getRoomsData(sensorsData);
+    console.log(roomsData);
     setRooms(roomsData);
   }
   
