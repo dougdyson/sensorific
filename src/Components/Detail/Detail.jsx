@@ -1,13 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Button from '@material-ui/core/Button'
+import readings from '../../data/readings';
 
-export default function Deets(props){
-  console.log('Deets:', props);
+export default function Details(){
+  let { id } = useParams();
+  console.log('id:', id);
+
+  function getSensorReadingsById (readings, id) {
+    return readings.filter((reading) => (id === reading.sensorId));
+  }
+
+  const sensorReadings = getSensorReadingsById(readings, id )
+
   return (
    <div>
-     <p><Button component={Link} to={'/'} size="large" variant="outlined">...Home</Button></p>
-     <p>Details!</p>
+     <p>
+        <Button 
+            component={Link} 
+            to={'/'} 
+            size="large" 
+            variant="outlined">
+            ...Home
+        </Button>
+      </p>
+     <p>{id}</p>
    </div> 
   )
 }
