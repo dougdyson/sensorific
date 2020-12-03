@@ -5,13 +5,12 @@ import readings from '../../data/readings';
 
 export default function Details(){
   let { id } = useParams();
-  console.log('id:', id);
 
   function getSensorReadingsById (readings, id) {
     return readings.filter((reading) => (id === reading.sensorId));
   }
 
-  const sensorReadings = getSensorReadingsById(readings, id )
+  const sensorReadings = getSensorReadingsById(readings, id);
 
   return (
    <div>

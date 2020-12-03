@@ -22,7 +22,7 @@ export default function Sensor(props) {
   }
   
   const id = props.devices.id;
-  const latestReading = getLatestSensorReadingById(readings, props.devices.id);
+  const latestReading = getLatestSensorReadingById(readings, props.devices.id); 
   
   let reading = parseFloat(latestReading.value).toFixed(1);
 
