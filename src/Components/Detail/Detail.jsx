@@ -1,29 +1,39 @@
 import React from 'react';
+import { DateTime }  from 'luxon';
 import { Link, useParams } from 'react-router-dom';
 import Button from '@material-ui/core/Button'
 import readings from '../../data/readings';
 
 export default function Details(){
-  let { id } = useParams();
 
-  function getSensorReadingsById (readings, id) {
-    return readings.filter((reading) => (id === reading.sensorId));
+  let { id } = useParams();
+  const sensorId = parseInt(id);
+  const times = {};
+  let sensorReadings = [];
+  console.log(times.toLocaleString);
+
+  if (sensorReadings) {
+    sensorReadings = readings.filter((reading) => (sensorId === reading.sensorId));
+  } else {
+    sensorReadings.push = {time: '--', value: '--'}
   }
 
-  const sensorReadings = getSensorReadingsById(readings, id);
+  
 
   return (
-   <div>
-     <p>
+   <section>
+     <h2>
         <Button 
             component={Link} 
             to={'/'} 
-            size="large" 
+            size="large"
             variant="outlined">
             ...Home
         </Button>
-      </p>
-     <p>{id}</p>
-   </div> 
+      </h2>
+     <p>{sensorReadings.map(sensorReading => (
+       <p>{sensorReading.time} || {sensorReading.value}</p>
+     ))}</p>
+   </section> 
   )
 }
