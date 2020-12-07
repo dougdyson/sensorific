@@ -6,20 +6,15 @@ import readings from '../../data/readings';
 
 export default function Details(){
 
-  let { id } = useParams();
-  const sensorId = parseInt(id);
-  const times = {};
-  let sensorReadings = [];
-  console.log(times.toLocaleString);
+  const { id } = useParams();
+  const sensorId = +id;
 
-  if (sensorReadings) {
+  let sensorReadings = null;
+
+  if (readings.length) {
     sensorReadings = readings.filter((reading) => (sensorId === reading.sensorId));
-  } else {
-    sensorReadings.push = {time: '--', value: '--'}
   }
-
   
-
   return (
    <section>
      <h2>
