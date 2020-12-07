@@ -12,7 +12,7 @@ export default function Sensor(props) {
   function getLatestSensorReadingById (readings, id) {
     // assumes readings are sorted chronologically
     const sensorReadings = readings.filter((reading) => (id === reading.sensorId));
-    // get last reading
+    // get last sensor reading
     const lastReading = sensorReadings.pop();
     if (lastReading) {
       return lastReading;
